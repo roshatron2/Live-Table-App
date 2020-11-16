@@ -6,8 +6,6 @@ const express = require("express"),
   adminRouter = require("./routes/admin"),
   userRouter = require("./routes/user");
 
-mongoose.set("debug", true);
-
 const uri =
   "mongodb+srv://roshatron:roshatron@cluster0.nw9vx.mongodb.net/Open_Table?retryWrites=true&w=majority";
 // const uri = "mongodb://localhost/open_table";

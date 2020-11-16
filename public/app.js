@@ -1,11 +1,19 @@
+var pusher = new Pusher("dcd64014e1046476f2ed", {
+  cluster: "ap2",
+});
+var channel = pusher.subscribe("my-channel");
+
 $(document).ready(() => {
   $.getJSON("/tables")
     .then(renderTables)
     .catch((err) => {
       console.log(err.message);
     });
-
-  setInterval(updateTables, 10000);
+  channel.bind("my-event", function (data) {
+    // console.log("An event was triggered with message: " + data.message);
+    updateTables();
+  });
+  // setInterval(updateTables, 10000);
 });
 
 function refreshTables(tables) {
